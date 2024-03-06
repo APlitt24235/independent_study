@@ -6,7 +6,7 @@ const ghostFrames = document.getElementById("ghosts");
 let fps = 60;
 let oneBlockSize = 20;
 let wallColor = "#343DCA";
-let wallSpaceWidth = oneBlockSize / 1.3;
+let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
 
