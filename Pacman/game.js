@@ -2,6 +2,10 @@ const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation");
 const ghostFrames = document.getElementById("ghosts");
+const DIRECTION_RIGHT = 4;
+const DIRECTION_UP = 3;
+const DIRECTION_LEFT = 2;
+const DIRECTION_BOTTOM = 1;
 
 let fps = 60;
 let oneBlockSize = 20;
