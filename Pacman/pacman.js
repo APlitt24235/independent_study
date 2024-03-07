@@ -11,7 +11,7 @@ class Pacman {
     moveProcess() {
         this.changeDirectionIfPossible();
         this.moveForwards();
-        if(this.checkCollision()) {
+        if (this.checkCollision()) {
             this.moveBackwards();
         };
     };
@@ -21,11 +21,24 @@ class Pacman {
     };
 
     moveBackwards() {
-
+        switch (this.direction) {
+            case DIRECTION_RIGHT:
+                this.x -= this.speed;
+                break;
+            case DIRECTION_UP:
+                this.y += this.speed;
+                break;
+            case DIRECTION_LEFT:
+                this.x += this.speed;
+                break;
+            case DIRECTION_BOTTOM:
+                this.y -= this.speed;
+                break;
+        };
     };
 
     moveForwards() {
-        switch(this.direction) {
+        switch (this.direction) {
             case DIRECTION_RIGHT:
                 this.x += this.speed;
                 break;
@@ -42,7 +55,10 @@ class Pacman {
     };
 
     checkCollision() {
+        let isCollided = false;
+        if (map[this.getMapY()][this.getMapX()] == 1 || map[this.getMapYRightSide()][this.getMapX()] == 1 || map[this.getMapY()][this.getMapXRightSide()] == 1) {
 
+        };
     };
 
     checkGhostCollision() {
@@ -60,4 +76,20 @@ class Pacman {
     draw() {
 
     };
-}
+
+    getMapX() {
+        return parseInt(this.x / oneBlockSize);
+    };
+
+    getMapY() {
+        return parseInt(this.y / oneBlockSize);
+    };
+
+    getMapXRightSide() {
+        return parseInt((this.x + 0.9999 * oneBlockSize) / oneBlockSize);
+    };
+
+    getMapYRightSide() {
+        return parseInt((this.y + 0.9999 * oneBlockSize) / oneBlockSize);
+    };
+};
