@@ -6,6 +6,8 @@ class Pacman {
         this.height = height;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
+        this.currentFrame = 1;
+        this.frameCount = 7;
     };
 
     moveProcess() {
@@ -55,10 +57,10 @@ class Pacman {
     };
 
     checkCollision() {
-        let isCollided = false;
-        if (map[this.getMapY()][this.getMapX()] == 1 || map[this.getMapYRightSide()][this.getMapX()] == 1 || map[this.getMapY()][this.getMapXRightSide()] == 1) {
-
+        if (map[this.getMapY()][this.getMapX()] == 1 || map[this.getMapYRightSide()][this.getMapX()] == 1 || map[this.getMapY()][this.getMapXRightSide()] == 1 || map[this.getMapYRightSide()][this.getMapXRightSide()] == 1) {
+            return true;
         };
+        return false;
     };
 
     checkGhostCollision() {
