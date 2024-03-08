@@ -7,7 +7,7 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 
-let fps = 60;
+let fps = 30;
 let oneBlockSize = 20;
 let wallColor = "#343DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
