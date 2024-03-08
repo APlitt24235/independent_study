@@ -85,11 +85,18 @@ let drawWalls = () => {
     };
 };
 
-let gameInterval = setInterval(gameLoop, 1000 / fps);
-
 let createNewPacman = () => {
     pacman = new Pacman(oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize / 5);
 };
+
+window.addEventListener("keydown", (event) => {
+    let k = event.keycode;
+    setTimeout(() => {
+        
+    }, 1);
+});
+
+let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 createNewPacman();
 gameLoop();
