@@ -8,6 +8,7 @@ class Pacman {
         this.direction = DIRECTION_RIGHT;
         this.currentFrame = 1;
         this.frameCount = 7;
+        this.nextDirection = this.direction;
 
         setInterval(() => {
             this.changeAnimation();

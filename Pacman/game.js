@@ -92,7 +92,19 @@ let createNewPacman = () => {
 window.addEventListener("keydown", (event) => {
     let k = event.keycode;
     setTimeout(() => {
-        
+        if (k == 37 || k == 65) { 
+            //Left
+            pacman.nextDirection = DIRECTION_LEFT;
+        } else if (k == 38 || k == 87) { 
+            //Up
+            pacman.nextDirection = DIRECTION_UP;
+        } else if (k == 39 || k == 68) { 
+            //Right
+            pacman.nextDirection = DIRECTION_RIGHT;
+        } else if (k == 40 || k == 83) {
+            //Bottom
+            pacman.nextDirection = DIRECTION_BOTTOM;
+        };
     }, 1);
 });
 
