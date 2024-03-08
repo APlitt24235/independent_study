@@ -90,7 +90,7 @@ let createNewPacman = () => {
 };
 
 window.addEventListener("keydown", (event) => {
-    let k = event.keycode;
+    let k = event.keyCode;
     setTimeout(() => {
         if (k == 37 || k == 65) { 
             //Left
