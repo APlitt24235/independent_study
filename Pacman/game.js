@@ -14,6 +14,7 @@ let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
 let foodColor = "#FEB897";
+let score = 0;
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -54,6 +55,7 @@ let gameLoop = () => {
 let update = () => {
     //Todo
     pacman.moveProcess();
+    pacman.eat();
 };
 
 let draw = () => {
