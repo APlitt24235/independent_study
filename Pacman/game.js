@@ -64,6 +64,7 @@ let draw = () => {
     drawWalls();
     pacman.draw();
     drawFoods();
+    drawScore();
 };
 
 
@@ -101,6 +102,12 @@ let drawFoods = () => {
             };
         };
     };
+};
+
+let drawScore = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("Score: " + score, 0, oneBlockSize * (map.length + 1) + 10);
 };
 
 window.addEventListener("keydown", (event) => {
