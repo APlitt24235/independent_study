@@ -17,6 +17,7 @@ let foodColor = "#FEB897";
 let score = 0;
 let ghosts = [];
 let ghostCount = 4;
+let lives = 3;
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -101,6 +102,7 @@ let update = () => {
     };
     if (pacman.checkGhostCollision()) {
         //console.log("Hit");
+        restartGame();
     };
 };
 
@@ -168,6 +170,15 @@ let createGhosts = () => {
 let drawGhosts = () => {
     for (let i = 0; i < ghosts.length; i++) {
         ghosts[i].draw();
+    };
+};
+
+let restartGame = () => {
+    createNewPacman();
+    createGhosts();
+    lives--;
+    if (lives == 0) {
+        gameOver();
     };
 };
 
