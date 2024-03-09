@@ -198,21 +198,21 @@ let drawLives = () => {
     canvasContext.fillStyle = "white";
     canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1) + 10);
     for (let i = 0; i < lives; i++) {
-        canvasContext.drawImage(pacmanFrames, 2 * oneBlockSize, 0, oneBlockSize, oneBlockSize, 275 + i * oneBlockSize, oneBlockSize * map.length + 14, oneBlockSize, oneBlockSize);
+        canvasContext.drawImage(pacmanFrames, 2 * oneBlockSize, 0, oneBlockSize, oneBlockSize, 350 + i * oneBlockSize, oneBlockSize * map.length + 11, oneBlockSize, oneBlockSize);
     };
 };
 
 let drawGameOver = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white"; 
-    canvasContext.fillText("Game Over!", 150, 200);
+    canvasContext.fillText("Game Over!", 120, 200);
 };
 
 let drawWin = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
-    canvasContext.fillText("Winner winner,", 0, 200);
-    canvasContext.fillText("chicken dinner!", 0, 230);
+    canvasContext.fillText("Winner winner,", 75, 200);
+    canvasContext.fillText("chicken dinner!", 75, 230);
 };
 
 for (let i = 0; i < map.length; i++) {

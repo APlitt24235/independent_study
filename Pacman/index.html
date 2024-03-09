@@ -11,6 +11,16 @@
         <img id="animations" src="assets/animations.gif" alt="">
         <img id="ghosts" src="assets/ghost.png" alt="">
     </div>
+    <script>
+        var f = new FontFace("Emulogic", "url(assets/emulogic.ttf)");
+
+        f.load().then(function(font) {
+            //Ready to use the font in a canvas context
+            console.log("Font ready.");
+            //Add font on the HTML page
+            document.fonts.add(font);
+        });
+    </script>
     <script src="ghost.js"></script>
     <script src="pacman.js"></script>
     <script src="game.js"></script>
