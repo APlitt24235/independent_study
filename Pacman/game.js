@@ -19,6 +19,7 @@ let ghosts = [];
 let ghostCount = 4;
 let lives = 3;
 let foodCount = 0;
+let radarMode = false;
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -238,6 +239,13 @@ window.addEventListener("keydown", (event) => {
         } else if (k == 40 || k == 83) {
             //Bottom
             pacman.nextDirection = DIRECTION_BOTTOM;
+        } else if (k == 8) {
+            //Radar Mode
+            if (radarMode == true) {
+                radarMode = false;
+            } else {
+                radarMode = true;
+            };
         };
     }, 1);
 });

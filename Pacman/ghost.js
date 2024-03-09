@@ -22,6 +22,13 @@ class Ghost {
         canvasContext.save();
         canvasContext.drawImage(ghostFrames, this.imageX, this.imageY, this.imageWidth, this.imageHeight, this.x, this.y, this.width, this.height);
         canvasContext.restore();
+
+        if (radarMode == true) {
+            canvasContext.beginPath();
+            canvasContext.strokeStyle = "red";
+            canvasContext.arc(this.x + oneBlockSize / 2, this.y + oneBlockSize / 2, this.range * oneBlockSize, 0, 2 * Math.PI);
+            canvasContext.stroke();
+        };
     };
 
     moveProcess() {
@@ -121,7 +128,7 @@ class Ghost {
     };
 
     changeRandomDirection() {
-        this.randomTargetIndex += 1;
+        this.randomTargetIndex += parseInt(Math.random() * 4);
         this.randomTargetIndex = this.randomTargetIndex % 4;
     };
 
