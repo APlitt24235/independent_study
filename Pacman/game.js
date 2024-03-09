@@ -16,6 +16,7 @@ let wallInnerColor = "black";
 let foodColor = "#FEB897";
 let score = 0;
 let ghosts = [];
+let ghostCount = 4;
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -73,6 +74,7 @@ let draw = () => {
     pacman.draw();
     drawFoods();
     drawScore();
+    drawGhosts();
 };
 
 
@@ -120,8 +122,15 @@ let drawScore = () => {
 
 let createGhosts = () => {
     ghosts = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < ghostCount; i++) {
         let newGhost = new Ghost(9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, oneBlockSize, oneBlockSize, pacman.speed / 2, ghostLocations[i % 4].x, ghostLocations[i % 4].y, 124, 116, 6 + i);
+        ghosts.push(newGhost);
+    };
+};
+
+let drawGhosts = () => {
+    for (let i = 0; i < ghosts.length; i++) {
+        ghosts[i].draw();
     };
 };
 
