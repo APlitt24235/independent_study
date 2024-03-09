@@ -185,7 +185,7 @@ class Ghost {
         };
         if (poped.y + 1 >= 0 && poped.y + 1 < numOfRows && mp[poped.y + 1][poped.x] != 1) {
             let tempMoves = poped.moves.slice();
-            tempMoves.push(DIRECTION_UP);
+            tempMoves.push(DIRECTION_BOTTOM);
             queue.push({
                 x: poped.x,
                 y: poped.y + 1,
