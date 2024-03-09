@@ -114,6 +114,7 @@ let draw = () => {
     drawFoods();
     drawScore();
     drawGhosts();
+    drawLives();
 };
 
 
@@ -184,7 +185,16 @@ let restartGame = () => {
 
 let gameOver = () => {
     clearInterval(gameInterval);
-}
+};
+
+let drawLives = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1) + 10);
+    for (let i = 0; i < lives; i++) {
+        canvasContext.drawImage(pacmanFrames, 2 * oneBlockSize, 0, oneBlockSize, oneBlockSize, 275 + i * oneBlockSize, oneBlockSize * map.length + 14, oneBlockSize, oneBlockSize);
+    };
+};
 
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;
