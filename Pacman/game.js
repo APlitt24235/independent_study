@@ -89,8 +89,8 @@ let createRect = (x, y, width, height, color) => {
 };
 
 let gameLoop = () => {
-    update();
     draw();
+    update();
 };
 
 let update = () => {
@@ -184,6 +184,7 @@ let restartGame = () => {
 };
 
 let gameOver = () => {
+    drawGameOver();
     clearInterval(gameInterval);
 };
 
@@ -194,6 +195,12 @@ let drawLives = () => {
     for (let i = 0; i < lives; i++) {
         canvasContext.drawImage(pacmanFrames, 2 * oneBlockSize, 0, oneBlockSize, oneBlockSize, 275 + i * oneBlockSize, oneBlockSize * map.length + 14, oneBlockSize, oneBlockSize);
     };
+};
+
+let drawGameOver = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white"; 
+    canvasContext.fillText("Game Over!", 150, 200);
 };
 
 window.addEventListener("keydown", (event) => {
