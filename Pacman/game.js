@@ -99,6 +99,9 @@ let update = () => {
     for (let i = 0; i < ghosts.length; i++) {
         ghosts[i].moveProcess();
     };
+    if (pacman.checkGhostCollision()) {
+        //console.log("Hit");
+    };
 };
 
 let draw = () => {
