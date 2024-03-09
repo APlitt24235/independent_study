@@ -114,4 +114,9 @@ class Ghost {
         };
         return false;
     };
+
+    changeRandomDirection() {
+        this.randomTargetIndex += 1;
+        this.randomTargetIndex = this.randomTargetIndex % 4;
+    };
 };
