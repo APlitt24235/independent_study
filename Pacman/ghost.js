@@ -11,6 +11,11 @@ class Ghost {
         this.imageHeight = imageHeight;
         this.imageWidth = imageWidth;
         this.range = range;
+        this.randomTargetIndex = parseInt(Math.random() * randomTargetsForGhosts.length);
+
+        setInterval(() => {
+            this.changeRandomDirection();
+        }, 10000);
     };
 
     draw() {
@@ -94,5 +99,19 @@ class Ghost {
         if (this.checkCollision()) {
             this.moveBackwards();
         };
+        if (this.isInRangeOfPacman()) {
+            target = pacman;
+        } else {
+            this.target = randomTargetForGhosts[this.randomTargetIndex];
+        }
+    };
+
+    isInRangeOfPacman() {
+        let xDistance = Math.abs(pacman.getMapX() - this.getMapX());
+        let yDistance = Math.abs(pacman.getMatY() - this.getMapY());
+        if (Math.sqrt(xDistance * xDistance + yDistance * yDistance) <= this.range) {
+            return true;
+        };
+        return false;
     };
 };
