@@ -13,6 +13,7 @@ let wallColor = "#343DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
+let foodColor = "#FEB897";
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -60,6 +61,7 @@ let draw = () => {
     //Todo
     drawWalls();
     pacman.draw();
+    drawFoods();
 };
 
 
@@ -87,6 +89,16 @@ let drawWalls = () => {
 
 let createNewPacman = () => {
     pacman = new Pacman(oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize / 5);
+};
+
+let drawFoods = () => {
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[0].length; j++) {
+            if (map[i][j] == 2) {
+                createRect(j * oneBlockSize + oneBlockSize / 3, i * oneBlockSize + oneBlockSize / 3, oneBlockSize / 3, oneBlockSize / 3, foodColor);
+            };
+        };
+    };
 };
 
 window.addEventListener("keydown", (event) => {
