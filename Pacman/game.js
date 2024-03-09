@@ -18,6 +18,7 @@ let score = 0;
 let ghosts = [];
 let ghostCount = 4;
 let lives = 3;
+let foodCount = 0;
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -103,6 +104,10 @@ let update = () => {
     if (pacman.checkGhostCollision()) {
         //console.log("Hit");
         restartGame();
+    };
+    if (score >= foodCount) {
+        drawWin();
+        clearInterval(gameInterval);
     };
 };
 
@@ -201,6 +206,21 @@ let drawGameOver = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white"; 
     canvasContext.fillText("Game Over!", 150, 200);
+};
+
+let drawWin = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText("Winner winner,", 0, 200);
+    canvasContext.fillText("chicken dinner!", 0, 230);
+};
+
+for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[0].length; j++) {
+        if (map[i][j] == 2) {
+            foodCount++;
+        };
+    };
 };
 
 window.addEventListener("keydown", (event) => {
