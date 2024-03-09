@@ -182,6 +182,10 @@ let restartGame = () => {
     };
 };
 
+let gameOver = () => {
+    clearInterval(gameInterval);
+}
+
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode;
     setTimeout(() => {
