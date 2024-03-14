@@ -17,14 +17,14 @@ import axios from "axios";
     }); 
 */
 
-const {useState} = React;
+const {useState, useEffect} = React;
 
 const fetchRandomData = () => {
     return axios.get("https://randomuser.me/api")
-        .then (res => {
+        .then (({data}) => {
             //handle success
-            console.log(res);
-            return res;
+            console.log(data);
+            return JSON.stringify(data);
         })
         .catch (err => {
             //handle error
@@ -34,6 +34,12 @@ const fetchRandomData = () => {
 
 export default function App() {
     const [counter, setCounter] = useState(0);
+    const [randomUserDataJSON, setRandomUserDataJSON] = useState("");
+    useEffect(() => {
+        fetchRandomData().then((randomData) => {
+            setRandomUserDataJSON(randomData || "No user data found.");
+        });
+    }, []);
     return (
         <div className="App">
             <h1>Hello!</h1>
@@ -42,9 +48,7 @@ export default function App() {
             <button onClick={() => {
                 setCounter(counter + 1);
             }}>Increase Counter</button>
-            <button onClick={() => {
-                fetchRandomData();
-            }}>Fetch Random Date</button>
+            <p>{randomUserDataJSON}</p>
         </div>
     );
 };
