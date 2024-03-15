@@ -24,7 +24,7 @@ const fetchRandomData = () => {
         .then (({data}) => {
             //handle success
             console.log(data);
-            return JSON.stringify(data);
+            return JSON.stringify(data, null, 2);
         })
         .catch (err => {
             //handle error
@@ -48,7 +48,7 @@ export default function App() {
             <button onClick={() => {
                 setCounter(counter + 1);
             }}>Increase Counter</button>
-            <p>{randomUserDataJSON}</p>
+            <pre>{randomUserDataJSON}</pre>
         </div>
     );
 };
