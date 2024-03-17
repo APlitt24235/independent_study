@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./styles.css";
 import axios from "axios";
+import {useRef} from "react";
 
 //Axios Example code:
 /* axios.get("/user?ID=12345")
@@ -56,7 +57,8 @@ export default function App() {
     const [nextPageNumber, setNextPageNumber] = useState(1);
     const [userInfos, setUserInfos] = useState<any>([]);
     const [randomUserDataJSON, setRandomUserDataJSON] = useState("");
-    const fetchNextUser = () => {
+    const fetchNextUser = useRef(() => {});
+    fetchNextUser.current = () => {
         fetchRandomData(nextPageNumber).then((randomData) => {
             //setRandomUserDataJSON(JSON.stringify(randomData, null, 2) || "No user data found.");
             if (randomData === undefined) {
@@ -71,7 +73,7 @@ export default function App() {
         });
     }
     useEffect(() => {
-        fetchNextUser();
+        fetchNextUser.current();
     }, []);
     return (
         <div className="App">
@@ -82,7 +84,7 @@ export default function App() {
                 setCounter(counter + 1);
             }}>Increase Counter</button>
             <button onClick={() => {
-                fetchNextUser();
+                fetchNextUser.current();
             }}>Fetch Next User</button>
             {
                 userInfos.map((userInfo : UserInfo, idx : number) => (
