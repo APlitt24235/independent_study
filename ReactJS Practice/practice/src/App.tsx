@@ -59,6 +59,9 @@ export default function App() {
     const fetchNextUser = () => {
         fetchRandomData(nextPageNumber).then((randomData) => {
             //setRandomUserDataJSON(JSON.stringify(randomData, null, 2) || "No user data found.");
+            if (randomData === undefined) {
+                return;
+            };
             const newUserInfos = [
                 ...userInfos,
                 ...randomData.results
