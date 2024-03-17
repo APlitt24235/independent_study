@@ -34,11 +34,10 @@ interface UserInfo {
     picture : UserPicture;
 };
 
-const fetchRandomData = () => {
-    return axios.get("https://randomuser.me/api")
+const fetchRandomData = (pageNumber : number) => {
+    return axios.get(`https://randomuser.me/api?page=${pageNumber}`)
         .then (({data}) => {
             //handle success
-            console.log(data);
             return data;
         })
         .catch (err => {
@@ -54,13 +53,22 @@ const getFullUserName = (userInfo : UserInfo) => {
 
 export default function App() {
     const [counter, setCounter] = useState(0);
+    const [nextPageNumber, setNextPageNumber] = useState(1);
     const [userInfos, setUserInfos] = useState<any>([]);
     const [randomUserDataJSON, setRandomUserDataJSON] = useState("");
-    useEffect(() => {
-        fetchRandomData().then((randomData) => {
-            setRandomUserDataJSON(JSON.stringify(randomData, null, 2) || "No user data found.");
-            setUserInfos(randomData.results);
+    const fetchNextUser = () => {
+        fetchRandomData(nextPageNumber).then((randomData) => {
+            //setRandomUserDataJSON(JSON.stringify(randomData, null, 2) || "No user data found.");
+            const newUserInfos = [
+                ...userInfos,
+                ...randomData.results
+            ];
+            setUserInfos(newUserInfos);
+            setNextPageNumber(randomData.info.page + 1);
         });
+    }
+    useEffect(() => {
+        fetchNextUser();
     }, []);
     return (
         <div className="App">
@@ -70,15 +78,18 @@ export default function App() {
             <button onClick={() => {
                 setCounter(counter + 1);
             }}>Increase Counter</button>
+            <button onClick={() => {
+                fetchNextUser();
+            }}>Fetch Next User</button>
             {
-                userInfos.map((userInfo : UserName, idx : number) => (
+                userInfos.map((userInfo : UserInfo, idx : number) => (
                     <div key="idx">
                         <p>{getFullUserName(userInfo)}</p>
                         <img src={userInfo.picture.thumbnail}/>
                     </div>
                 ))
             }
-            <pre>{randomUserDataJSON}</pre>
+            {/*<pre>{randomUserDataJSON}</pre>*/}
         </div>
     );
 };
